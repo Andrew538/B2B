@@ -1,0 +1,56 @@
+.box {
+    display: flex;
+    gap: 50px;
+     @media(max-width: 1250px) {
+              display: block;
+                flex-basis: inherit;   
+        };
+    &__right {
+      flex-basis: 85%;
+             @media(max-width: 1250px) {
+              display: block;
+                flex-basis: inherit;   
+        };
+    }
+}
+.container {
+  margin: 20px 0;
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+    color: #333;
+  }
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap; // Чтобы плитки переносились на мобильных
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px; // Скругление делает вид современнее
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+
+  &:hover {
+    // Используем ваш фирменный зеленый
+    border-color: #00b869; 
+    color: #00b869;
+    box-shadow: 0 4px 12px rgba(0, 184, 105, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

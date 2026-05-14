@@ -1,0 +1,19 @@
+@use "sass:math";
+
+@mixin fluid-font($min-size, $max-size, $min-breakpoint: 320px, $max-breakpoint: 1920px) {
+  $min-size-rem: math.div($min-size, 16px) * 1rem;
+  $max-size-rem: math.div($max-size, 16px) * 1rem;
+  
+  // Вычисляем наклон
+  $slope: math.div(($max-size - $min-size), ($max-breakpoint - $min-breakpoint));
+  $y-axis-intersection: -$min-breakpoint * $slope + $min-size;
+  
+  $intersection-rem: math.div($y-axis-intersection, 16px) * 1rem;
+  $slope-vw: $slope * 100vw;
+
+  font-size: clamp(
+    #{$min-size-rem}, 
+    #{$intersection-rem} + #{$slope-vw}, 
+    #{$max-size-rem}
+  );
+}

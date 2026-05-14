@@ -1,0 +1,57 @@
+@use "mixin" as *;
+
+$color: #000;
+$color-gray-light: #dedede;
+$color-warm-gray-100: #D8D8D0;
+$color-white-smoke: #f5f5f5;
+$color-white: #fff;
+$color-green-medium: #00b86c;
+$color-white-smoke-hover: #FFFF00 ;
+$bg-gray: rgb(247, 247, 250);
+
+$textColor: #333;
+$borderColor: #e0e0e0;
+$disabledColor: #f5f5f5;
+ $color-red: #FF0000;
+$fontFamily: "JetBrainsMono-Regular";
+$fontFamilyBold: "JetBrainsMono-Bold";
+
+// Основные цвета
+// НАСТРОЙКИ ===============================================================================================================================================================================================================================================================================================
+$mainColor: #688494; // Цвет шрифта по умолчанию
+
+
+$fontSize: 16px; 
+// Минимальная ширина страницы
+$minWidth: 320;
+// Ширина полотна (макета)
+$maxWidth: 1920;
+// Ширина ограничивающего контейнера (0 = нет ограничения)
+$maxWidthContainer: 1582;
+// Общий отступ у контейнера
+// (30 = по 15px слева и справа, 0 = нет отступа)
+$containerPadding: 30;
+
+// Ширина срабатывания первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Брейк-поинты
+$pc: em($containerWidth); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$pc_1920: em(1920);
+
+$pc_1480: em(1480);
+$pc_1450: em(1450);
+
+$pc_1280: em(1280);
+$pc_1200: em(1200);
+
+
+$tablet: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
+$tablet_860: em(860);
+$mobile: em(767.98); // Телефоны L
+$mobile_727: em(727);
+$mobile_640: em(640);
+$mobileSmall: em(479.98); // Телефоны S
+$mobileM: em(400);
+$mobile_360: em(360);
+$mobile_320: em(320);

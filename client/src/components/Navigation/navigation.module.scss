@@ -1,0 +1,123 @@
+
+
+// .nav {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//         gap: 30px;
+//         color: $color;
+//         user-select: none;
+//         transition: transform 0.3s;
+//         font-family: $fontFamilyBold, sans-serif;
+
+//     &__link {
+//         text-transform: uppercase;
+//         color: $color-white;
+//         &:hover {
+//             // color: $color-white-smoke-hover;
+//             color: $color-white-smoke-hover;
+
+//         }
+//     }
+// }
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    color: $color;
+    user-select: none;
+    font-family: $fontFamilyBold, sans-serif;
+
+    @media (max-width: 498px) {
+        overflow: auto;
+        position: fixed;
+        top: 0;
+        right: -100%; // Обязательно: прячем за край экрана
+        width: 100%;
+        height: 100vh;
+        background-color: $color-green-medium;
+        flex-direction: column;
+        justify-content: center;
+        transition: right 0.4s ease;
+        z-index: 100;
+                padding-top: 151px;
+        padding-bottom: 50px;
+        
+        &.active {
+            right: 0;
+        }
+    }
+
+    // Стили для крестика
+    &__close {
+        display: none; // Скрыт на десктопе
+
+        @media (max-width: 498px) {
+            display: block;
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+
+            span {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background: $color-white;
+                transform: rotate(45deg);
+                position: relative;
+                top: 50%;
+
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 2px;
+                    background: $color-white;
+                    transform: rotate(-90deg);
+                    position: absolute;
+                }
+            }
+        }
+    }
+
+    &__link {
+        text-transform: uppercase;
+        color: $color-white;
+        transition: color 0.3s;
+        
+        &:hover {
+            color: $color-white-smoke-hover;
+        }
+
+        @media (max-width: 498px) {
+            font-size: 24px;
+            padding: 20px;
+        }
+        
+        &:global(.active) {
+            text-decoration: underline;
+        }
+    }
+}
+.nav__mobile_exit {
+    display: none;
+    
+    @media (max-width: 498px) {
+        display: block;
+        margin-top: auto; // Прижимает к низу меню
+        width: 100%;
+        max-width: 200px;
+
+        button {
+            width: 100%;
+            background: transparent;
+            border: 1px solid $color-white;
+            color: $color-white;
+        }
+    }
+}

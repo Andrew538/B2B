@@ -1,0 +1,87 @@
+// @use "sass:math";
+@use "sass:math"; // Если нужно для расчетов
+@use "mixin" as *;
+@use "variable" as *;
+
+@use 'null';
+
+@use 'fonts';
+body {
+	// Скролл заблокирован
+	.lock & {
+		overflow: hidden;
+		touch-action: none;
+	}
+	// Сайт загружен
+	.loaded & {
+	}
+}
+
+// Оболочка ============================================================================================================================================================================================================================================================================================================================================================================================================================================
+.wrapper {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	position: relative;
+
+	// Прижимаем footer
+	> main {
+		flex: 1 1 auto;
+	}
+	// Фикс для слайдеров
+	> * {
+		min-width: 0;
+	}
+}
+
+// Тип адаптива:
+// 1 = отзывчивость (у контейнера нет брейкпоинтов),
+// 2 = по брейк-поинтам (контейнер меняет свою ширину по брейк-поинтам)
+$responsiveType: 2;
+// (i) Стили будут применяться ко 
+// всем классам содержащим *__container
+// Например header__container, main__container и т.д.
+// Снипет (HTML): cnt
+// */
+@if ($responsiveType==1) {
+	// Отзывчивая
+	[class*="__container"] {
+		@if ($maxWidthContainer>0) {
+			max-width: $maxWidthContainer;
+			box-sizing: content-box;
+			margin: 0 auto;
+		}
+		@if ($containerPadding>0) {
+			padding: 0 math.div($containerPadding, 2);
+		}
+	}
+} @else {
+	// По брейк-поинтам
+	// :global([class*="__container"])
+	[class*="__container"] {
+   			margin: 0 auto;
+		@if ($maxWidthContainer > 0) {
+			max-width: $maxWidthContainer + px;
+		}
+		@if ($containerPadding > 0) {
+			// Безопасное деление через math.div
+			padding: 0 math.div($containerPadding, 2) + px;
+		}
+
+		@media (max-width: $pc) {
+			max-width: 970;
+		}
+		@media (max-width: $tablet) {
+			max-width: 750;
+		}
+		@media (max-width: $mobile) {
+			max-width: none;
+			@if ($containerPadding>0 and $maxWidthContainer>0) {
+				padding: 0 math.div($containerPadding, 2);
+			}
+		}
+	}
+}
+
+

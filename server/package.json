@@ -1,0 +1,60 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "overrides": {
+    "tar": "7.5.11"
+  },
+  "scripts": {
+    "dev": "nodemon --exec tsx --env-file=.env.development index.js",
+    "start": " nodemon --env-file=.env.production index.js",
+    "pm2:start": "pm2 start index.js --name \"prod-app\" --node-args=\"--env-file=.env.production\"",
+    "starts": "nodemon index.js -p",
+    "test:load": "artillery run --record --key load-test.yml",
+    "migrate-data": "node migrate-crypto.js",
+    "build": "rimraf dist && tsc",
+    "startnew": "node --env-file=.env.development dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bullmq": "^5.66.4",
+    "connect-session-sequelize": "^8.0.5",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "csrf-csrf": "^4.0.3",
+    "dotenv": "^16.6.1",
+    "exceljs": "^4.4.0",
+    "express": "^4.19.2",
+    "express-async-errors": "^3.1.1",
+    "express-rate-limit": "^8.3.1",
+    "express-session": "^1.19.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "lru-cache": "^11.2.6",
+    "luxon": "^3.7.2",
+    "multer": "^2.0.2",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^7.0.12",
+    "pg": "^8.20.0",
+    "pg-boss": "^12.5.4",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7",
+    "socket.io": "^4.8.3",
+    "uuid": "^13.0.0",
+    "winston": "^3.19.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.6.0",
+    "artillery": "^2.0.30",
+    "nodemon": "^3.1.4",
+    "rimraf": "^6.1.3",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  }
+}
